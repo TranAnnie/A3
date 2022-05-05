@@ -1,4 +1,4 @@
-package main.java.ClientServer.Server;
+package ClientServer.Server;
 
 import main.java.ClientServer.Server.Repositories.BookRepository;
 import main.java.ClientServer.Shared.Book;

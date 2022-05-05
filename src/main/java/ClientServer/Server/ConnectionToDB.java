@@ -1,6 +1,6 @@
-package main.java.ClientServer.Server;
+package ClientServer.Server;
 
-import main.java.PasswordsAndKeys;
+import ClientServer.PasswordsAndKeys;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
