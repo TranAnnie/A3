@@ -29,7 +29,7 @@ public class BookRepository {
         return true;
     }
 
-    public ArrayList<Book> getBooks(int nbr) {
+    public ArrayList<Book> getBooks() {
         ArrayList<Book> bookList = new ArrayList<>();
         String query = "SELECT * FROM [Book];";
         try {
