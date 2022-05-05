@@ -1,6 +1,5 @@
-package main.java.ClientServer.Server.Repositories;
+package ClientServer.Server.Repositories;
 
-import main.java.ClientServer.Server.ConnectionToDB;
 import main.java.ClientServer.Shared.Book;
 
 import java.sql.Connection;
@@ -18,7 +17,7 @@ public class BookRepository {
     }
 
     public boolean addBook(Book book) {
-        String query = "INSERT INTO [Book] VALUES ('" + book.getStoreId() + "', '" + book.getName() + "', '" + book.getFirstAuthor() + "'," + book.getPublishingYear() + ");";
+        String query = "INSERT INTO [Books] VALUES ('" + book.getStoreId() + "', '" + book.getName() + "', '" + book.getFirstAuthor() + "'," + book.getPublishingYear() + ");";
         try {
             Statement statement = connection.createStatement();
             statement.executeUpdate(query);
@@ -31,7 +30,7 @@ public class BookRepository {
 
     public ArrayList<Book> getBooks() {
         ArrayList<Book> bookList = new ArrayList<>();
-        String query = "SELECT * FROM [Book];";
+        String query = "SELECT * FROM [Books];";
         try {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
