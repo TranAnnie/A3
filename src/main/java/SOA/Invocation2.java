@@ -20,6 +20,7 @@ public class Invocation2 {
             if (httpURLConnection.getResponseCode() != 200){
                 System.out.println("Some error!!");
                 System.exit(0);
+
             }
 
             InputStreamReader in = new InputStreamReader(httpURLConnection.getInputStream());
