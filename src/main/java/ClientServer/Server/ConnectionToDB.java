@@ -1,6 +1,6 @@
 package main.java.ClientServer.Server;
 
-import PasswordsAndKeys;
+import main.java.PasswordsAndKeys;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -25,6 +25,7 @@ public class ConnectionToDB {
             dbServerIp = "localhost";
         }
         String dbURL = String.format("jdbc:sqlserver://%s:%s;databaseName=" + dbName + ";user=%s;password=%s", dbServerIp, dbServerPort, dbUser, dbPassword);
+
         this.connection = DriverManager.getConnection(dbURL);
         //System.out.println(connection);
         return connection;
