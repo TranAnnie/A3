@@ -36,10 +36,10 @@ public class BookRepository {
             Statement statement = connection.createStatement();
             ResultSet resultSet = statement.executeQuery(query);
             while (resultSet.next()) {
-                int id = resultSet.getInt("storeId");
-                String name = resultSet.getString("name");
-                String firstAuthor = resultSet.getString("firstAuthor");
-                int publishingYear = resultSet.getInt("publishingYear");
+                int id = resultSet.getInt("StoreId");
+                String name = resultSet.getString("Name");
+                String firstAuthor = resultSet.getString("FirstAuthor");
+                int publishingYear = resultSet.getInt("PublishingYear");
                 bookList.add(new Book(id, name, firstAuthor, publishingYear));
             }
         } catch (SQLException sqlException) {
