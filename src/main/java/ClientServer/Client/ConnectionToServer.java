@@ -1,6 +1,6 @@
 package ClientServer.Client;
 
-public class Connection {
+public class ConnectionToServer {
 
     //Socket connection
 }
