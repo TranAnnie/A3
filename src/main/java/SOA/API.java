@@ -1,5 +1,6 @@
 package SOA;
 import ClientServer.Server.ConnectionToDB;
+import ClientServer.Server.Repositories.BookRepository;
 import ClientServer.Shared.Book;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -25,12 +26,8 @@ public class API {
     @Path("/list")
     @Produces({MediaType.APPLICATION_JSON})
     public String getBookList(){
-        List<Book> books = new ArrayList<>();
         Database db = new Database();
-        db.getBooks();
-        for (Book book : books) {
-            books.add(book);
-        }
+        List<Book> books = db.getBooks();
 
         GsonBuilder builder = new GsonBuilder();
         Gson gson = builder.create();
