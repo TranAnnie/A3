@@ -1,7 +1,7 @@
 package ClientServer.Server;
 
 import ClientServer.Server.Repositories.BookRepository;
-import main.java.ClientServer.Shared.Book;
+import ClientServer.Shared.Book;
 
 import java.sql.Connection;
 import java.util.ArrayList;

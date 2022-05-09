@@ -1,4 +1,4 @@
-package main.java.ClientServer.Server;
+package ClientServer.Server;
 
 public class ServerInterface {
 

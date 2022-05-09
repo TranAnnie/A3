@@ -1,4 +1,4 @@
-package main.java.ClientServer.Shared;
+package ClientServer.Shared;
 
 import java.io.Serializable;
 

@@ -1,6 +1,6 @@
 package ClientServer.Server.Repositories;
 
-import main.java.ClientServer.Shared.Book;
+import ClientServer.Shared.Book;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

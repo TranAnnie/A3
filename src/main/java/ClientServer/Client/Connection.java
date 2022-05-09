@@ -1,4 +1,4 @@
-package main.java.ClientServer.Client;
+package ClientServer.Client;
 
 public class Connection {
 

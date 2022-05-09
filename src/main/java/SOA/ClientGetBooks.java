@@ -10,17 +10,17 @@ import java.net.ProtocolException;
 import java.net.URL;
 import java.util.Objects;
 
-public class Invocation2 {
+public class ClientGetBooks {
+
     public static void main(String[] args) {
         try {
-            URL url = new URL("http://localhost:9989/books/allBooks/");
+            URL url = new URL("http://localhost:9998/books/list/");
             HttpURLConnection httpURLConnection = (HttpURLConnection) url.openConnection();
             httpURLConnection.setRequestMethod("GET");
             httpURLConnection.setRequestProperty("Accept", "application/json");
             if (httpURLConnection.getResponseCode() != 200){
-                System.out.println("Some error!!");
+                System.out.println("Error");
                 System.exit(0);
-
             }
 
             InputStreamReader in = new InputStreamReader(httpURLConnection.getInputStream());
