@@ -1,15 +1,15 @@
 package ClientServer.Client;
 
-import ClientServer.Shared.ResponseMessage;
+import ClientServer.Shared.Book;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 public class ServerConnection extends Thread {
     private String host;
     private int port;
-    private Socket socket;
     private ObjectInputStream ois;
 
     public ServerConnection(String host, int port){
@@ -19,12 +19,15 @@ public class ServerConnection extends Thread {
 
     @Override
     public void run() {
-        ResponseMessage response = null;
+        Socket socket = null;
+        ArrayList<Book> response = null;
         try{
             socket = new Socket(host, port);
-
             ois = new ObjectInputStream(socket.getInputStream());
-            response = (ResponseMessage) ois.readObject();
+            response = (ArrayList<Book>) ois.readObject();
+            for(Book i: response){
+                System.out.println("Result" +i.getName());
+            }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

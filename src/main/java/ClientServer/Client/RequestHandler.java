@@ -1,8 +1,5 @@
 package ClientServer.Client;
 
-
-import ClientServer.Shared.ResponseMessage;
-
 public class RequestHandler {
  /*   private Connection connection;
 

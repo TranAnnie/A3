@@ -16,8 +16,8 @@ public class Server extends Thread {
     private boolean isServerRunning;
     private ResponseHandler responseHandler;
 
-    public Server(int port, ResponseHandler responseHandler){
-        this.responseHandler = responseHandler;
+    public Server(int port){
+        this.responseHandler = new ResponseHandler();
         executor = Executors.newFixedThreadPool(10);
         try{
             serverSocket = new ServerSocket(port);
@@ -40,6 +40,7 @@ public class Server extends Thread {
             }
         }
         executor.shutdown();
+        System.out.println("Server is closed");
     }
 
     class ClientRequest implements Runnable {
@@ -51,6 +52,7 @@ public class Server extends Thread {
             try {
                 this.socket = socket;
                 this.oos = new ObjectOutputStream(socket.getOutputStream());
+                run();
             } catch (IOException e) {
                 e.printStackTrace();
             }

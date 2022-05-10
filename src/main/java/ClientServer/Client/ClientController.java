@@ -2,8 +2,8 @@ package ClientServer.Client;
 
 public class ClientController {
 
-    public ClientController(){
-        runTest(10);
+    public ClientController(int nbrOfClients){
+        runTest(nbrOfClients);
     }
 
     private void runTest(int nbrOfClients) {
