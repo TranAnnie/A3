@@ -13,7 +13,7 @@ public class ConnectionToDB {
 
     private java.sql.Connection connection;
 
-    public Connection createConnection() throws SQLException, UnknownHostException, ClassNotFoundException {
+    private Connection createConnection() throws SQLException, UnknownHostException, ClassNotFoundException {
         String dbServerIp = PasswordsAndKeys.dbServerIp;
         String dbServerPort = PasswordsAndKeys.dbServerPort;
         String dbUser = PasswordsAndKeys.dbUsername;
