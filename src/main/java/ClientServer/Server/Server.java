@@ -7,18 +7,14 @@ import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class Server extends Thread {
     private ServerSocket serverSocket = null;
-    private ExecutorService executor;
     private boolean isServerRunning;
     private ResponseHandler responseHandler;
 
     public Server(int port){
         this.responseHandler = new ResponseHandler();
-        executor = Executors.newFixedThreadPool(10);
         try{
             serverSocket = new ServerSocket(port);
             System.out.println("Server is running");
@@ -33,13 +29,11 @@ public class Server extends Thread {
         while(isServerRunning){
             try {
                 Socket socket = serverSocket.accept();
-                ClientRequest task = new ClientRequest(socket);
-                executor.submit(task);
+                new ClientRequest(socket).run();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        executor.shutdown();
         System.out.println("Server is closed");
     }
 

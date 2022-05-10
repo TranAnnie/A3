@@ -25,9 +25,6 @@ public class ServerConnection extends Thread {
             socket = new Socket(host, port);
             ois = new ObjectInputStream(socket.getInputStream());
             response = (ArrayList<Book>) ois.readObject();
-            for(Book i: response){
-                System.out.println("Result" +i.getName());
-            }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
