@@ -18,6 +18,15 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../sqljdbc4-4.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: org.glassfish.jersey.core:jersey-server:2.0-m01" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.jersey.core:jersey-common:2.0-m01" level="project" />
     <orderEntry type="library" name="Maven: javax.mail:mail:1.4" level="project" />
@@ -43,14 +52,5 @@
     <orderEntry type="library" name="Maven: org.glassfish.jersey.core:jersey-client:2.0-m01" level="project" />
     <orderEntry type="library" name="Maven: com.googlecode.json-simple:json-simple:1.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.code.gson:gson:2.8.4" level="project" />
-    <orderEntry type="module-library">
-      <library>
-        <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/sqljdbc4-4.0.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
   </component>
 </module>

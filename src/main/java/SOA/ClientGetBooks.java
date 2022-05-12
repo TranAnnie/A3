@@ -22,7 +22,6 @@ public class ClientGetBooks {
                 System.out.println("Error");
                 System.exit(0);
             }
-
             InputStreamReader in = new InputStreamReader(httpURLConnection.getInputStream());
             BufferedReader br = new BufferedReader(in);
             String output = "";

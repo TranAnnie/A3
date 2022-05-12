@@ -11,7 +11,6 @@ public class CreateBooks {
     public static void main(String[] args) {
         //addBooksToDB();
         getBooks();
-
     }
 
     private static void getBooks() {
