@@ -4,16 +4,16 @@ import ClientServer.PasswordsAndKeys;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.sql.*;
-
+import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionToDB {
 
-    private java.sql.Connection connection;
 
-    private Connection createConnection() throws SQLException, UnknownHostException, ClassNotFoundException {
+    private Connection connection;
+
+    public Connection createConnection() throws UnknownHostException, ClassNotFoundException, SQLException {
         String dbServerIp = PasswordsAndKeys.dbServerIp;
         String dbServerPort = PasswordsAndKeys.dbServerPort;
         String dbUser = PasswordsAndKeys.dbUsername;
@@ -36,8 +36,11 @@ public class ConnectionToDB {
             try {
                 connection = createConnection();
             }
-            catch (UnknownHostException | SQLException | ClassNotFoundException e) {
+            catch (UnknownHostException e) {
                 e.printStackTrace();
+            }
+            catch (SQLException | ClassNotFoundException sqlException) {
+                sqlException.printStackTrace();
             }
         }
         return connection;
