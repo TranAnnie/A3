@@ -27,6 +27,7 @@ public class ClientGetBooks {
             String output = "";
             while ((output = br.readLine()) != null){
                 System.out.println("----- Böckerna: -----");
+                
                 System.out.println(output);
             }
             httpURLConnection.disconnect();
