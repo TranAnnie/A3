@@ -6,7 +6,6 @@ import ClientServer.Shared.Book;
 import java.sql.Connection;
 import java.util.ArrayList;
 
-
 public class ResponseHandler {
 
     public ArrayList<Book> handleRequest() {
