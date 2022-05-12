@@ -1,27 +1,23 @@
 package ClientServer.Server;
 
-import ClientServer.Shared.RequestMessage;
-import ClientServer.Shared.ResponseMessage;
+import ClientServer.Shared.Book;
 
 import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.ArrayList;
 
 public class Server extends Thread {
     private ServerSocket serverSocket = null;
-    private ExecutorService executor;
     private boolean isServerRunning;
     private ResponseHandler responseHandler;
 
-    public Server(int port, ResponseHandler responseHandler){
-        this.responseHandler = responseHandler;
-        executor = Executors.newFixedThreadPool(10);
+    public Server(int port){
+        this.responseHandler = new ResponseHandler();
         try{
             serverSocket = new ServerSocket(port);
+            System.out.println("Server is running");
             isServerRunning = true;
             start();
         } catch (IOException e) {
@@ -33,26 +29,24 @@ public class Server extends Thread {
         while(isServerRunning){
             try {
                 Socket socket = serverSocket.accept();
-                ClientRequest task = new ClientRequest(socket);
-                executor.submit(task);
+                new ClientRequest(socket).run();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
-        executor.shutdown();
+        System.out.println("Server is closed");
     }
 
     class ClientRequest implements Runnable {
 
-        private ObjectInputStream ois;
         private ObjectOutputStream oos;
         private Socket socket;
 
         public ClientRequest(Socket socket) {
             try {
                 this.socket = socket;
-                this.ois = new ObjectInputStream(socket.getInputStream());
                 this.oos = new ObjectOutputStream(socket.getOutputStream());
+                run();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -61,15 +55,13 @@ public class Server extends Thread {
         @Override
         public void run() {
             try {
-                RequestMessage request = (RequestMessage) ois.readObject();
-                ResponseMessage response = responseHandler.handleRequest(request);
-                oos.writeObject(response);
+                ArrayList<Book> books = responseHandler.handleRequest();
+                oos.writeObject(books);
                 oos.flush();
-            } catch (IOException | ClassNotFoundException e) {
+            } catch (IOException e) {
                 e.printStackTrace();
             } finally {
                 try {
-                    ois.close();
                     oos.close();
                     socket.close();
 
