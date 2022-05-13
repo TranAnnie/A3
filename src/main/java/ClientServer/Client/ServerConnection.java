@@ -11,6 +11,7 @@ public class ServerConnection extends Thread {
     private String host;
     private int port;
     private ObjectInputStream ois;
+    private Socket socket = null;
 
     public ServerConnection(String host, int port){
         this.host = host;
@@ -19,17 +20,16 @@ public class ServerConnection extends Thread {
 
     @Override
     public void run() {
-        Socket socket = null;
         ArrayList<Book> response = null;
         try{
-            socket = new Socket(host, port);
+            this.socket = new Socket(host, port);
             ois = new ObjectInputStream(socket.getInputStream());
             response = (ArrayList<Book>) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }
         try{
-            socket.close();
+            this.socket.close();
             ois.close();
         }
         catch(IOException e){

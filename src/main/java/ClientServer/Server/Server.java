@@ -16,7 +16,7 @@ public class Server extends Thread {
     public Server(int port){
         this.responseHandler = new ResponseHandler();
         try{
-            serverSocket = new ServerSocket(port);
+            this.serverSocket = new ServerSocket(port);
             System.out.println("Server is running");
             isServerRunning = true;
             start();
@@ -29,7 +29,8 @@ public class Server extends Thread {
         while(isServerRunning){
             try {
                 Socket socket = serverSocket.accept();
-                new ClientRequest(socket).run();
+                ClientRequest clientRequest = new ClientRequest((socket));
+                clientRequest.run();
             } catch (IOException e) {
                 e.printStackTrace();
             }
@@ -37,7 +38,7 @@ public class Server extends Thread {
         System.out.println("Server is closed");
     }
 
-    class ClientRequest implements Runnable {
+    class ClientRequest extends Thread {
 
         private ObjectOutputStream oos;
         private Socket socket;
@@ -46,7 +47,6 @@ public class Server extends Thread {
             try {
                 this.socket = socket;
                 this.oos = new ObjectOutputStream(socket.getOutputStream());
-                run();
             } catch (IOException e) {
                 e.printStackTrace();
             }

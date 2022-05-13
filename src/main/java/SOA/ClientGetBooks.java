@@ -11,10 +11,8 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Objects;
 
-public class ClientGetBooks{
+public class ClientGetBooks {
 
     private static void testSoa(int nbrOfClients) {
         long init = System.currentTimeMillis();
