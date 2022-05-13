@@ -45,7 +45,7 @@ public class Server extends Thread {
                     System.out.println("Socket Close Error");
                 }
             }
-            System.out.println("Server is closed");
         }
+        System.out.println("Server is closed");
     }
 }
