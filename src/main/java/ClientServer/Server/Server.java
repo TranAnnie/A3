@@ -12,10 +12,12 @@ public class Server extends Thread {
     private ServerSocket serverSocket = null;
     private boolean isServerRunning;
     private ResponseHandler responseHandler;
+    private Socket socket;
+    private ObjectOutputStream oos;
 
-    public Server(int port){
+    public Server(int port) {
         this.responseHandler = new ResponseHandler();
-        try{
+        try {
             this.serverSocket = new ServerSocket(port);
             System.out.println("Server is running");
             isServerRunning = true;
@@ -25,36 +27,11 @@ public class Server extends Thread {
         }
     }
 
-    public void run(){
-        while(isServerRunning){
+    public void run() {
+        while (isServerRunning) {
             try {
-                Socket socket = serverSocket.accept();
-                ClientRequest clientRequest = new ClientRequest((socket));
-                clientRequest.run();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        System.out.println("Server is closed");
-    }
-
-    class ClientRequest extends Thread {
-
-        private ObjectOutputStream oos;
-        private Socket socket;
-
-        public ClientRequest(Socket socket) {
-            try {
-                this.socket = socket;
+                socket = serverSocket.accept();
                 this.oos = new ObjectOutputStream(socket.getOutputStream());
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-
-        @Override
-        public void run() {
-            try {
                 ArrayList<Book> books = responseHandler.handleRequest();
                 oos.writeObject(books);
                 oos.flush();
@@ -64,11 +41,11 @@ public class Server extends Thread {
                 try {
                     oos.close();
                     socket.close();
-
                 } catch (IOException ie) {
                     System.out.println("Socket Close Error");
                 }
             }
+            System.out.println("Server is closed");
         }
     }
 }
