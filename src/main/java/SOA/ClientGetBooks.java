@@ -10,8 +10,6 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Objects;
 
 public class ClientGetBooks {
 
@@ -47,7 +45,7 @@ public class ClientGetBooks {
         }
 
     }
-    public static String parse(String responseBody){
+    public static void parse(String responseBody){
         JSONArray bookArray = new JSONArray(responseBody);
         for (int i = 0;i < bookArray.length(); i++) {
             JSONObject book = bookArray.getJSONObject(i);
@@ -57,6 +55,6 @@ public class ClientGetBooks {
             int publishingYear = book.getInt("publishingYear");
             System.out.println("storeId: "+ storeId + " name: " + name + " firstAuthor: " + firstAuthor + " publishingYear: " +publishingYear);
         }
-        return null;
+
     }
 }
