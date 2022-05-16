@@ -27,6 +27,24 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/sqljdbc4-4.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Downloads/sqljdbc4-4.0.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: org.glassfish.jersey.core:jersey-server:2.0-m01" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.jersey.core:jersey-common:2.0-m01" level="project" />
     <orderEntry type="library" name="Maven: javax.mail:mail:1.4" level="project" />
@@ -39,7 +57,7 @@
     <orderEntry type="library" name="Maven: org.glassfish.hk2.external:javax.inject:1.6.32" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.hk2.external:asm-all-repackaged:1.6.32" level="project" />
     <orderEntry type="library" name="Maven: org.jvnet:tiger-types:1.4" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.microsoft.sqlserver:mssql-jdbc:6.4.0.jre8" level="project" />
+    <orderEntry type="library" name="Maven: com.microsoft.sqlserver:mssql-jdbc:6.4.0.jre8" level="project" />
     <orderEntry type="library" name="Maven: com.sun.xml.bind:jaxb-core:2.3.0.1" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.bind:jaxb-api:2.1" level="project" />
     <orderEntry type="library" name="Maven: javax.xml.stream:stax-api:1.0-2" level="project" />
