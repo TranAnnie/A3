@@ -1,6 +1,7 @@
 package ClientServer.Client;
 
 import ClientServer.Shared.Book;
+import ClientServer.Shared.BookList;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -20,11 +21,10 @@ public class ServerConnection extends Thread {
 
     @Override
     public void run() {
-        ArrayList<Book> response = null;
         try{
             this.socket = new Socket(host, port);
             ois = new ObjectInputStream(socket.getInputStream());
-            response = (ArrayList<Book>) ois.readObject();
+            BookList bookList = (BookList) ois.readObject();
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
         }

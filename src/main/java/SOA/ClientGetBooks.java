@@ -13,20 +13,7 @@ import java.net.ProtocolException;
 import java.net.URL;
 
 public class ClientGetBooks extends Thread{
-    public static void main(String[] args) {
-        int nbrOfClients = 50;
-        long init = System.currentTimeMillis();
-        for (int i = 0; i < nbrOfClients; i++) {
-            ClientGetBooks cgb = new ClientGetBooks();
-            cgb.start();
-        }
-        long end = System.currentTimeMillis();
-        long elapsedTime = end - init;
-        System.out.println("SOA. Nbr of clients: "+nbrOfClients +". Time: " +elapsedTime);
 
-
-
-    }
     @Override
     public void run(){
         try {
@@ -46,13 +33,11 @@ public class ClientGetBooks extends Thread{
             String output = "";
             while((output = br.readLine()) !=null){
                 sb.append(output);
-
             }
             br.close();
             httpURLConnection.disconnect();
             String test = parse(sb.toString());
             // System.out.println(test);
-
 
         } catch (MalformedURLException | ProtocolException e) {
             e.printStackTrace();

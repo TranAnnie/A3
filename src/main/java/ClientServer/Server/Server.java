@@ -1,47 +1,40 @@
 package ClientServer.Server;
 
-import ClientServer.Shared.Book;
+import ClientServer.Shared.BookList;
 
 import java.io.IOException;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
 
-public class Server extends Thread {
-    private ServerSocket serverSocket = null;
-    private boolean isServerRunning;
+public class Server {
+
     private ResponseHandler responseHandler;
 
     public Server(int port){
+        ServerSocket serverSocket = null;
+        Socket socket = null;
         this.responseHandler = new ResponseHandler();
         try{
-            this.serverSocket = new ServerSocket(port);
+            serverSocket = new ServerSocket(port);
             System.out.println("Server is running");
-            isServerRunning = true;
-            start();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void run(){
-        while(isServerRunning){
+        while(true){
             try {
-                Socket socket = serverSocket.accept();
-                ClientRequest clientRequest = new ClientRequest((socket));
-                clientRequest.run();
+                socket = serverSocket.accept();
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            new ClientRequest(socket).start();
         }
-        System.out.println("Server is closed");
     }
 
     class ClientRequest extends Thread {
 
         private ObjectOutputStream oos;
-        private Socket socket;
+        protected Socket socket;
 
         public ClientRequest(Socket socket) {
             try {
@@ -55,8 +48,8 @@ public class Server extends Thread {
         @Override
         public void run() {
             try {
-                ArrayList<Book> books = responseHandler.handleRequest();
-                oos.writeObject(books);
+                BookList bookList = new BookList(responseHandler.handleRequest());
+                oos.writeObject(bookList);
                 oos.flush();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -64,7 +57,6 @@ public class Server extends Thread {
                 try {
                     oos.close();
                     socket.close();
-
                 } catch (IOException ie) {
                     System.out.println("Socket Close Error");
                 }
