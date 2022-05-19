@@ -1,8 +1,5 @@
 package SOA;
 
-import ClientServer.Client.ServerConnection;
-import ClientServer.Shared.Book;
-import org.json.Cookie;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -44,7 +41,6 @@ public class ClientGetBooks extends Thread{
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
 
     public synchronized static String parse (String responseBody){

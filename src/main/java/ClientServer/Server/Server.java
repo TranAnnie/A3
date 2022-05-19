@@ -11,17 +11,17 @@ public class Server {
 
     private ResponseHandler responseHandler;
 
-    public Server(int port){
+    public Server(int port) {
         ServerSocket serverSocket = null;
         Socket socket = null;
         this.responseHandler = new ResponseHandler();
-        try{
+        try {
             serverSocket = new ServerSocket(port);
             System.out.println("Server is running");
         } catch (IOException e) {
             e.printStackTrace();
         }
-        while(true){
+        while (true) {
             try {
                 socket = serverSocket.accept();
             } catch (IOException e) {
@@ -33,8 +33,8 @@ public class Server {
 
     class ClientRequest extends Thread {
 
-        private ObjectOutputStream oos;
         protected Socket socket;
+        private ObjectOutputStream oos;
 
         public ClientRequest(Socket socket) {
             try {

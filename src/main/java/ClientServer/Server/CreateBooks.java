@@ -9,7 +9,6 @@ import java.util.ArrayList;
 public class CreateBooks {
 
     public static void main(String[] args) {
-        //addBooksToDB();
         getBooks();
     }
 

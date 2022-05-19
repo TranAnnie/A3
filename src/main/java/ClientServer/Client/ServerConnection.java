@@ -1,12 +1,10 @@
 package ClientServer.Client;
 
-import ClientServer.Shared.Book;
 import ClientServer.Shared.BookList;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.net.Socket;
-import java.util.ArrayList;
 
 public class ServerConnection extends Thread {
     private String host;
